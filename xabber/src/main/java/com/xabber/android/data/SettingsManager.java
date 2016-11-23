@@ -490,9 +490,8 @@ public class SettingsManager implements OnInitializedListener,
     }
 
     public static boolean securityCheckCertificate() {
-        return false;
-//        return getBoolean(R.string.security_check_certificate_key,
-//                R.bool.security_check_certificate_default);
+        return getBoolean(R.string.security_check_certificate_key,
+                R.bool.security_check_certificate_default);
     }
 
     public static SecurityOtrMode securityOtrMode() {
