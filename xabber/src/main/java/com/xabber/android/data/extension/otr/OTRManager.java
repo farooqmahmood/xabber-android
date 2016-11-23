@@ -551,36 +551,36 @@ public class OTRManager implements OtrEngineHost, OtrEngineListener,
 
     @Override
     public void onAccountAdded(final AccountItem accountItem) {
-        if (accountItem.getKeyPair() != null) {
-            return;
-        }
-        keyPairGenerator.execute(new Runnable() {
-            @Override
-            public void run() {
-                LogManager.i(this, "KeyPair generation started for " + accountItem.getAccount());
-                final KeyPair keyPair;
-                try {
-                    keyPair = KeyPairGenerator.getInstance("DSA").genKeyPair();
-                } catch (final NoSuchAlgorithmException e) {
-                    Application.getInstance().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            throw new RuntimeException(e);
-                        }
-                    });
-                    return;
-                }
-                Application.getInstance().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        LogManager.i(this, "KeyPair generation finished for " + accountItem.getAccount());
-                        if (AccountManager.getInstance().getAccount(accountItem.getAccount()) != null) {
-                            AccountManager.getInstance().setKeyPair(accountItem.getAccount(), keyPair);
-                        }
-                    }
-                });
-            }
-        });
+//        if (accountItem.getKeyPair() != null) {
+//            return;
+//        }
+//        keyPairGenerator.execute(new Runnable() {
+//            @Override
+//            public void run() {
+//                LogManager.i(this, "KeyPair generation started for " + accountItem.getAccount());
+//                final KeyPair keyPair;
+//                try {
+//                    keyPair = KeyPairGenerator.getInstance("DSA").genKeyPair();
+//                } catch (final NoSuchAlgorithmException e) {
+//                    Application.getInstance().runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            throw new RuntimeException(e);
+//                        }
+//                    });
+//                    return;
+//                }
+//                Application.getInstance().runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        LogManager.i(this, "KeyPair generation finished for " + accountItem.getAccount());
+//                        if (AccountManager.getInstance().getAccount(accountItem.getAccount()) != null) {
+//                            AccountManager.getInstance().setKeyPair(accountItem.getAccount(), keyPair);
+//                        }
+//                    }
+//                });
+//            }
+//        });
     }
 
     @Override
